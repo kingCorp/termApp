@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/', 'TermappController@home');
+
+    Route::get('/dashboard', 'TermappController@dashboard');
+    Route::get('/edit', 'TermappController@edit');
+
+
 });
+
